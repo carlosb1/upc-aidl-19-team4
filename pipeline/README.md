@@ -4,7 +4,7 @@
 link : https://www.cfpw.io / https:/https:///www.cfpw.io/cfp-dataset.zip
 
 
-# REQUERIMENTS
+# REQUIREMENTS
 ```
 conda create -n py37 python=3.7
 pip install ipython imgaug torch torchvision bunch tqdm tf-nigthly future
