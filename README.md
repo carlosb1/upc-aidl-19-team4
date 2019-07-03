@@ -14,9 +14,9 @@ The main idea in the project was the implementation of an end-to-end person reco
 
 ## Motivation
 
-At the beginning, my main motivation is the implementation of a complete pipeline for people recognition, where I analysed the different parts: *detection* and *recognition*. In the moment to work with recognition I like Siamese networks[1] and how they can work better for recognition, I decided to reviewed it.
+At the beginning, my main motivation was the implementation of a complete pipeline for people recognition, where I analysed the different parts: *detection* and *recognition*. In the moment to work with recognition I liked the  Siamese networks[1] and how they improve the performance then  I decided to reviewed it.
 
-After this, I was very interested how a retrieval system can be work and be scalable applying cosine functions[2]. With this report, I understand how the extraction of features can be very powerful for a lot of type of solutions.
+After this, I started to be interested in how a retrieval system can work and can be scalable applying cosine functions[2]. With this code, I could figure out how the extraction of features has a powerful role int this type of solution.
 
 
 # Structure Code
