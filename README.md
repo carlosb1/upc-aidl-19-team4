@@ -14,7 +14,7 @@ The main idea in the project was the implementation of an end-to-end person reco
 
 ## Motivation
 
-At the beginning, my main motivation was the implementation of a complete pipeline for people recognition, where I analysed the different parts: *detection* and *recognition*. In the moment to work with recognition I liked the  Siamese networks[1] and how they improve the performance then  I decided to reviewed it.
+At the beginning, my main motivation was the implementation of a complete pipeline for people recognition, where I analysed the different parts: *detection* and *recognition*. In the moment to work with recognition I liked the  Siamese networks[1] and how they improve the performance then  I decided to review it.
 
 After this, I started to be interested in how a retrieval system can work and can be scalable applying cosine functions[2]. With this code, I could figure out how the extraction of features has a powerful role int this type of solution.
 
@@ -68,7 +68,7 @@ scripts                                       -> General scripts
 # Documentation
 
 ## Detection
-For the detection module. It is was studied and analysed two neural networks and two datasets:
+For the detection module. It was studied and analysed two neural networks and two datasets:
 - *Tiny Faces*
 	- code https://github.com/cydonia999/Tiny_Faces_in_Tensorflow
 	- paper https://arxiv.org/abs/1612.04402
@@ -92,7 +92,7 @@ The bubble graph can give us a small overview about the differences of both: (ac
 It was implemented Siamese Network with [VGG][vgg] features. I got a pretrained VGG with Imagenet[3] and I applied a finetuning for faces.
 
 In general, I implemented  different networks with different loss techniques:
-- Two siamese neural networks getting features from a VGG convolutional network and apply a cosine similarity[5]
+- Two siamese neural networks getting features from a VGG convolutional network and the application of a cosine similarity[5]
 - Two siamese networks which a concatenation in order to join features and get a classification with  a cross entropy loss[4]
 - One siamese with a triplet loss function
 
@@ -108,8 +108,8 @@ The backend architecute is a VGG16-bn (batch normalized) and its convolutional l
 
 After this point, it is applied different techniques to check the performance and compare results:
 - First one, it applies a cosine similarity loss function to search better results with the convolutional layers
-	- v1 It is the simplest version, it only gets the VGG feature and It is applied a cosine loss function.
-	- v2 In this version, it is added a linear version to flat the features that it is traine. Furthemore, It uses a Cosine loss function
+	- v1 It is the simplest version, it only gets the VGG feature and It is applied rhe cosine loss function.
+	- v2 In this version, it is added a linear version to flat the features that it is trained. Furthemore, It uses a Cosine loss function
 - In the second one, it is joined the two branches to get a classification. Furthemore, It is added  some improvements in order to fit better the analysed problem..
 	- The neural network  named decision, it includes a minimal decision network with a few linear layers to do it. All this after to concatenate both features (from the two branches)
 	- In the decision network linear, it is added a linear layer before the concatenation to improve the training and the performance. It tries to get better feature for our use case.
