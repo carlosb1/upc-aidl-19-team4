@@ -225,14 +225,14 @@ pip install -r requirements.txt
 
 The code has different entrypoints for different use cases (detection, recognition, creation of graphs, parsing, upload data). The main split of the work  is in two main
 use cases: *detection* and *recognition* where they are:
-	- Detection - `evaluate_tiny_faces.py` and `evaluate_yolo.py` to execute the benchmark and run the detection algorithms
-	- Recognition - `test.py` is the script to train a new neural network. For the triplet, it is the last one implemented, it needed a set of important changes
-	in the architecture, for this reason, it is created a different file `test_triplet.py`
+	
+- Detection - `evaluate_tiny_faces.py` and `evaluate_yolo.py` to execute the benchmark and run the detection algorithms
+- Recognition - `test.py` is the script to train a new neural network. For the triplet, it is the last one implemented, it needed a set of important changes in the architecture, for this reason, it is created a different file `test_triplet.py`
 
 It is important to comment that I didn't add argument line parser because It was not clear the requirements while I was developing.. For this reason, you must change different
 paths (datasets, weights, etc..) paths for your environment.
 
-Then to execute the training It must be something like this (for python 3.6+):
+Then, to execute the training It must be something like this (for python 3.6+):
 ```
 # In the recognition directory
 python tests.py
