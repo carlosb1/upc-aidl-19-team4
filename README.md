@@ -304,7 +304,7 @@ The demo is included in `scripts/test_practica_carlos.py`
 
 [VGG_paper] https://arxiv.org/abs/1409.1556
 
-[data_augmentation] i[https://github.com/aleju/imgaug
+[data_augmentation] https://github.com/aleju/imgaug
 
 
 
