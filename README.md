@@ -175,33 +175,58 @@ The winner in the benchmark is the **Cosine v1 + Triplet +  SGD optimizer and Da
 
 ### Siamese cosine tests (V1 and V2)
 
+
 #### Cosine networks SGD test
+
+The first experiments that I did is with SGD in order to get my first results and  to compare with different configurations. Here, It is possible to check how it learns stable. 
+
 ![siamese1_sara_sgd]
 ![siamese2_sara_sgd]
 
 #### Cosine networks SGD + Data aug. test
+
+The data augmentation helps in a better training. It is possible to check how the validation and training data are fitting better.
+
 ![siamese1_sara_sgd_normtrans]
 ![siamese2_sara_sgd_normtrans]
 
 #### Cosine networks ADAM + Data aug. test
+
+Furthermore, the Adam optimizer works well with cosine networks. It is possible to check how it is improved the process to find the best loss. Unfortunately, The accuracy was poor, I tried different values for the learning rate, weight decay (0, 0.001, 5e-4) but It doesn't help, I got the conclusion I need more time to find the best parameters to use it. For this, I stopped this study line.
+
 ![siamese1_sara_adam_normtrans]
 ![siamese2_sara_adam_normtrans]
 
 ### Cosine v1 with triplet loss! (SGD and ADAM) + Data augmentation
+
+My last test was the implementation of the triplet loss where It works better if we compare with previous experiments. The idea to use negative and positive images in the loss function helps a lot to find the minimum.
+
 ![triplet1_sara_sgd_normtrans]
 ![triplet1_sara_adam_normtrans]
 
 ### Decision networks (Decision and linear network)
 
+I did the same experiments for the decision layers. In the first experiments, I can detected how the performance is poor and after more experiments I could confirm that it doesn't work better.
+
 #### Decision networks SGD 
+
+It is possible check how the overfitting happens very fast, and I starts to figure out that It is not the best workflow for my use case.
+
 ![decision_sara_sgd]
 ![decision_linear_sara_sgd]
 
+
 #### Decision networks SGD + Data aug
+
+Here, I figured out that the data augmentation is not improving the values, the overfitting only happens a few epochs after. 
+
 ![decision_sara_sgd_normtrans]
 ![decision_linear_sara_sgd_normtrans]
 
 #### Decision networks Adam + Data aug
+
+Applying Adam, in this case, it was exhausting... I tried the same parameters with the Decision and Cosine neural networks. But in this case, I could find the best option for the first decision network.
+
 ![decision_sara_adam_normtrans]
 ![decision_linear_sara_adam_normtrans]
 
