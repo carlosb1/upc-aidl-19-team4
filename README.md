@@ -89,16 +89,16 @@ The bubble graph can give us a small overview about the differences of both: (ac
 
 ## Recognition
 
-It was implemented Siamese Network with [VGG][vgg] features. I got a pretrained VGG with Imagenet[3] and I applied a finetuning for faces.
+It was implemented a Siamese Network with [VGG][vgg] features. I got a pretrained VGG with Imagenet[3] and I applied a finetuning for faces.
 
 In general, I implemented  different networks with different loss techniques:
 - Two siamese neural networks getting features from a VGG convolutional network and the application of a cosine similarity[5]
 - Two siamese networks which a concatenation in order to join features and get a classification with  a cross entropy loss[4]
 - One siamese with a triplet loss function
 
-About experimentes, they are classified as:
+About experiments, they are classified as:
 - Change optimizer SGD or ADAM (With different learning rates and weight decay) (1e-3, 5e-4, 1e-4)
-	- It was tuned other paramters as weight decay, betas, etc... In order to find the best configuration that I added in the result table
+	- It was tuned other parameters as weight decay, betas, momentum, etc... In order to find the best configuration that I added in the result table
 - With and without data augmentation. In the data augmentation process with rotations, flips and jitter modifications.
 	- The idea is check if they have improvements. If it happens, add more modifications to improve the percentage.
 - Changing the loss functions that means change the type of neural network
@@ -108,11 +108,11 @@ The backend architecute is a VGG16-bn (batch normalized) and its convolutional l
 
 After this point, it is applied different techniques to check the performance and compare results:
 - First one, it applies a cosine similarity loss function to search better results with the convolutional layers
-	- v1 It is the simplest version, it only gets the VGG feature and It is applied rhe cosine loss function.
-	- v2 In this version, it is added a linear version to flat the features that it is trained. Furthemore, It uses a Cosine loss function
-- In the second one, it is joined the two branches to get a classification. Furthemore, It is added  some improvements in order to fit better the analysed problem..
-	- The neural network  named decision, it includes a minimal decision network with a few linear layers to do it. All this after to concatenate both features (from the two branches)
-	- In the decision network linear, it is added a linear layer before the concatenation to improve the training and the performance. It tries to get better feature for our use case.
+	- v1 It is the simplest version, it only gets the VGG feature and It is applied the cosine loss function.
+	- v2 In this version, it is added a linear layer to flat the features that it is trained. Furthermore, It uses the cosine  loss function too.
+- In the second one, it is joined the two branches to get a classification. Furthermore, It is added improvements in order to achieve a better solution.
+	- The neural network  named decision, it includes a minimal decision network with a few linear layers to do it. It is done  after the concatenation of features (from the two branches)
+	- In the decision network linear, it is added a linear layer before this concatenation to improve the training and the performance. It tries to get better feature for our use case.
 
 
 
@@ -144,12 +144,12 @@ In the second type of architectures, they include the concatenation and the deci
 
 ### Result table
 
-In order to evaluate which algorithm can be fit better for my use case, I did different tests:
-- The chosen dataset is the [cfp dataset][cfp_dataset]. The main reason to use it because it includes annotations to check different or same pair of faces.
-- The result table has the validation accuracy for the dataset. The idea is the calculation of the test accuracy (usin the splitted test dataset) for the best option of all.
+In order to evaluate which algorithm can fit better, I did different tests:
+- The chosen dataset is the [cfp dataset][cfp_dataset]. It includes annotations for different or same pair of faces.
+- The result table has the validation accuracy for the dataset, the idea is the calculation of the test accuracy (usin the splitted test dataset) for the best option of all.
 - The table includes results of the tests but It was done some experiments to figure out how to tune parameters as the learning rate.
 - The data augmentation applies jitter, flip and rotations for our images. 
-
+- The table includes the best accuracy with the best input hyperparameters that I could find.
 
 Here, it is the table of results for the validation split:
 
@@ -161,8 +161,6 @@ Here, it is the table of results for the validation split:
 | Decision            | 79.35  |      80.6      |    49.80        |
 | Decision linear     | 78.28  |      81.71     |    76.75        |
 | Cosine v1 + triplet |        |      83.28     |    81.71        |
-
-In general, it is done different variation of parameter, applying SGD, Adam and triplet as loss functions. In fact, it is done 
 
 
 #### Triplet loss results (Best results)
@@ -178,7 +176,7 @@ The winner in the benchmark is the **Cosine v1 + Triplet +  SGD optimizer and Da
 
 #### Cosine networks SGD test
 
-The first experiments that I did is with SGD in order to get my first results and  to compare with different configurations. Here, It is possible to check how it learns stable. 
+First experiments that I did is applying SGD to obtain first results that I will be able to compare with different configurations. Here, It is possible to check how it learns without problems. 
 
 ![siamese1_sara_sgd]
 ![siamese2_sara_sgd]
@@ -192,25 +190,25 @@ The data augmentation helps in a better training. It is possible to check how th
 
 #### Cosine networks ADAM + Data aug. test
 
-Furthermore, the Adam optimizer works well with cosine networks. It is possible to check how it is improved the process to find the best loss. Unfortunately, The accuracy was poor, I tried different values for the learning rate, weight decay (0, 0.001, 5e-4) but It doesn't help, I got the conclusion I need more time to find the best parameters to use it. For this, I stopped this study line.
+Furthermore, the Adam optimizer works well with cosine networks. It is possible to check how it is improved the process to find the best loss. Unfortunately, The accuracy was poor, I tried different values for the learning rate, weight decay (0, 0.001, 5e-4) but It doesn't help, I got the conclusion I need more time to find the best hyperparameters for our case. For this, I stopped this study line.
 
 ![siamese1_sara_adam_normtrans]
 ![siamese2_sara_adam_normtrans]
 
 ### Cosine v1 with triplet loss! (SGD and ADAM) + Data augmentation
 
-My last test was the implementation of the triplet loss where It works better if we compare with previous experiments. The idea to use negative and positive images in the loss function helps a lot to find the minimum.
+My last test was the implementation of the triplet loss where I got the best results. The idea to use negative and positive images in the loss function provide more comparative information to the loss function (para metric was used by default, in this case 1.0)
 
 ![triplet1_sara_sgd_normtrans]
 ![triplet1_sara_adam_normtrans]
 
 ### Decision networks (Decision and linear network)
 
-I did the same experiments for the decision layers. In the first experiments, I can detected how the performance is poor and after more experiments I could confirm that it doesn't work better.
+I did the same experiments for the decision layers. In the first experiments, I could already detected how the performance is poor and after more experiments I could confirm it.
 
 #### Decision networks SGD 
 
-It is possible check how the overfitting happens very fast, and I starts to figure out that It is not the best workflow for my use case.
+It is possible check how the overfitting happens very fast, and I starts to figure out that It is not the best workflow in my use case.
 
 ![decision_sara_sgd]
 ![decision_linear_sara_sgd]
@@ -218,14 +216,14 @@ It is possible check how the overfitting happens very fast, and I starts to figu
 
 #### Decision networks SGD + Data aug
 
-Here, I figured out that the data augmentation is not improving the values, the overfitting only happens a few epochs after. 
+Here, I figured out that the data augmentation is not improving the values, the overfitting only happens some epochs after. 
 
 ![decision_sara_sgd_normtrans]
 ![decision_linear_sara_sgd_normtrans]
 
 #### Decision networks Adam + Data aug
 
-Applying Adam, in this case, it was exhausting... I tried the same parameters with the Decision and Cosine neural networks. But in this case, I could find the best option for the first decision network.
+Applying Adam, in this case, was exhausting... I tried different hypeparameters values but the accuracy was not better.
 
 ![decision_sara_adam_normtrans]
 ![decision_linear_sara_adam_normtrans]
