@@ -282,6 +282,9 @@ If you add the threshold, it will calculate the accuracy taking care the argumen
 
 The demo is included in `scripts/test_practica_carlos.py`
 
+**WEIGHTS:**
+- YOLO WEIGHTS: https://drive.google.com/open?id=1ZsWJx2IwMTO7WZrlyC6Bg4G-yUA5Vhd1
+- TINY_FACES WEIGHTS: https://drive.google.com/open?id=18NuCfWNScDpCr9Un3yuhuE6BNpf_2-0e
 
 ## References
 [1] Siamese networks https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf
