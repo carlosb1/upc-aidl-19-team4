@@ -307,6 +307,7 @@ The demo is included in `scripts/test_practica_carlos.py`
 
 [data_augmentation] https://github.com/aleju/imgaug
 
+[triplet_loss]https://en.wikipedia.org/wiki/Triplet_loss
 
 
 
