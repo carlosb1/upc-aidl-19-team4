@@ -1,7 +1,7 @@
 # RESOURCES
 
 # DATASET
-link : https://www.cfpw.io / https:///www.cfpw.io/cfp-dataset.zip
+link : https://www.cfpw.io / https://www.cfpw.io/cfp-dataset.zip
 
 
 # REQUIREMENTS
