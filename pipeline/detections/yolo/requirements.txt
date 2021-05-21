@@ -1,5 +1,5 @@
 numpy
-tensorflow==1.8.0
+tensorflow==2.5.0
 opencv-python
 opencv-contrib-python
 keras
